@@ -40,3 +40,20 @@ function addQuote() {
 }
 
 addQuoteBtn.addEventListener("click", addQuote);
+
+
+
+
+
+// function elManipulation () {
+// const displayContainer = document.getElementById("quoteDisplay");
+// document.createElement("<div>
+//     <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
+//     <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
+//     <button id="addQuote">Add Quote</button>
+//   </div>").setAttribute("class", "form");
+
+// console.log(displayContainer);
+// }
+
+// console.log(elManipulation());
