@@ -19,7 +19,7 @@ const quotes = [
 newQuoteBtn.addEventListener("click", showRandomQuote);
 console.log(showRandomQuote());
   
-// Function to add a new quote
+
 function addQuote() {
   const newQuoteText = document.getElementById("newQuoteText").value.trim();
   const newQuoteCategory = document.getElementById("newQuoteCategory").value.trim();
@@ -29,10 +29,8 @@ function addQuote() {
     return;
   }
 
-  // Add the new quote to the array
   quotes.push({ text: newQuoteText, category: newQuoteCategory });
 
-  // Clear input fields
   document.getElementById('newQuoteText').value = "";
   document.getElementById('newQuoteCategory').value = "";
 
