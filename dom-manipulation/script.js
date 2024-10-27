@@ -21,30 +21,34 @@ console.log(showRandomQuote());
   
 
 function addQuote() {
-// Step 1: Create a container div for the form elements
-const formContainer = document.createElement('div');
 
-// Step 2: Create the input for the quote text
-const newQuoteText = document.createElement('input');
-newQuoteText.setAttribute('id', 'newQuoteText');
-newQuoteText.setAttribute('type', 'text');
-newQuoteText.setAttribute('placeholder', 'Enter a new quote');
+  function createAddForm() {
+    // Step 1: Create a container div for the form elements
+    const formContainer = document.createElement('div');
 
-// Step 3: Create the input for the quote category
-const quoteCategoryInput = document.createElement('input');
-quoteCategoryInput.setAttribute('id', 'newQuoteCategory');
-quoteCategoryInput.setAttribute('type', 'text');
-quoteCategoryInput.setAttribute('placeholder', 'Enter quote category');
+    // Step 2: Create the input for the quote text
+    const newQuoteText = document.createElement('input');
+    newQuoteText.setAttribute('id', 'newQuoteText');
+    newQuoteText.setAttribute('type', 'text');
+    newQuoteText.setAttribute('placeholder', 'Enter a new quote');
 
-// Step 4: Create the button to add the quote
-const addQuoteButton = document.createElement('button');
-addQuoteButton.innerText = 'Add Quote';
-addQuoteButton.addEventListener('click', addQuote); // Attach the addQuote function as an event listener
+    // Step 3: Create the input for the quote category
+    const quoteCategoryInput = document.createElement('input');
+    quoteCategoryInput.setAttribute('id', 'newQuoteCategory');
+    quoteCategoryInput.setAttribute('type', 'text');
+    quoteCategoryInput.setAttribute('placeholder', 'Enter quote category');
 
-// Step 5: Append the inputs and button to the form container
-formContainer.appendChild(newQuoteText);
-formContainer.appendChild(quoteCategoryInput);
-formContainer.appendChild(addQuoteButton);
+    // Step 4: Create the button to add the quote
+    const addQuoteButton = document.createElement('button');
+    addQuoteButton.innerText = 'Add Quote';
+    addQuoteButton.addEventListener('click', addQuote); // Attach the addQuote function as an event listener
+
+    // Step 5: Append the inputs and button to the form container
+    formContainer.appendChild(newQuoteText);
+    formContainer.appendChild(quoteCategoryInput);
+    formContainer.appendChild(addQuoteButton);
+  } 
+
 
 const text = document.getElementById('newQuoteText').value;
 const category = document.getElementById('newQuoteCategory').value;
