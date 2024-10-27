@@ -13,7 +13,7 @@ const quotes = [
     const randomQuote = quotes[randomIndex];
     const quoteDisplay = document.getElementById("randomQuote");
     
-    displayContainer.textContent = `"${randomQuote.text}" - Category: ${randomQuote.category}`;
+    displayContainer.innerHtml = `"${randomQuote.text}" - Category: ${randomQuote.category}`;
   }
 
 newQuoteBtn.addEventListener("click", showRandomQuote);
