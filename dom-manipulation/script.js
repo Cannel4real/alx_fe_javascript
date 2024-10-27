@@ -22,7 +22,7 @@ console.log(showRandomQuote());
 
 function addQuote() {
 
-  function createAddForm() {
+  function createAddQuoteForm() {
     // Step 1: Create a container div for the form elements
     const formContainer = document.createElement('div');
 
@@ -48,7 +48,7 @@ function addQuote() {
     formContainer.appendChild(quoteCategoryInput);
     formContainer.appendChild(addQuoteButton);
   } 
-  createAddForm();
+  createAddQuoteForm();
 
 
 const text = document.getElementById('newQuoteText').value;
