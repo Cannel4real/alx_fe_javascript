@@ -13,7 +13,7 @@ const quotes = [
     const randomQuote = quotes[randomIndex];
     const quoteDisplay = document.getElementById("randomQuote");
     
-    displayContainer.innerHtml = `"${randomQuote.text}" - Category: ${randomQuote.category}`;
+  return  displayContainer.textContent= `"${randomQuote.text}" - Category: ${randomQuote.category}`;
   }
 
 newQuoteBtn.addEventListener("click", showRandomQuote);
@@ -25,10 +25,10 @@ function addQuote() {
 const formContainer = document.createElement('div');
 
 // Step 2: Create the input for the quote text
-const quoteTextInput = document.createElement('input');
-quoteTextInput.setAttribute('id', 'newQuoteText');
-quoteTextInput.setAttribute('type', 'text');
-quoteTextInput.setAttribute('placeholder', 'Enter a new quote');
+const newQuoteText = document.createElement('input');
+newQuoteText.setAttribute('id', 'newQuoteText');
+newQuoteText.setAttribute('type', 'text');
+newQuoteText.setAttribute('placeholder', 'Enter a new quote');
 
 // Step 3: Create the input for the quote category
 const quoteCategoryInput = document.createElement('input');
@@ -42,22 +42,26 @@ addQuoteButton.innerText = 'Add Quote';
 addQuoteButton.addEventListener('click', addQuote); // Attach the addQuote function as an event listener
 
 // Step 5: Append the inputs and button to the form container
-formContainer.appendChild(quoteTextInput);
+formContainer.appendChild(newQuoteText);
 formContainer.appendChild(quoteCategoryInput);
 formContainer.appendChild(addQuoteButton);
 
-  if (newQuoteText === "" || newQuoteCategory === "") {
-    alert("Please enter both a quote and a category.");
-    return;
-  }
+const text = document.getElementById('newQuoteText').value;
+const category = document.getElementById('newQuoteCategory').value;
 
-  quotes.push({ text: newQuoteText, category: newQuoteCategory });
 
-  document.getElementById('newQuoteText').value = "";
-  document.getElementById('newQuoteCategory').value = "";
-
+if (text && category) {
+  quotes.push({ text, category });
+  document.getElementById('newQuoteText').value = '';
+  document.getElementById('newQuoteCategory').value = '';
   alert("Quote added successfully!");
+} else {
+  alert("Please enter both text and category.");
 }
+
+}
+console.log(addQuote());
+
 
 addQuoteBtn.addEventListener("click", addQuote);
 
