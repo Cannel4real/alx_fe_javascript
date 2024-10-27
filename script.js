@@ -21,8 +21,30 @@ console.log(showRandomQuote());
   
 
 function addQuote() {
-  const newQuoteText = document.getElementById("newQuoteText").value.trim();
-  const newQuoteCategory = document.getElementById("newQuoteCategory").value.trim();
+// Step 1: Create a container div for the form elements
+const formContainer = document.createElement('div');
+
+// Step 2: Create the input for the quote text
+const quoteTextInput = document.createElement('input');
+quoteTextInput.setAttribute('id', 'newQuoteText');
+quoteTextInput.setAttribute('type', 'text');
+quoteTextInput.setAttribute('placeholder', 'Enter a new quote');
+
+// Step 3: Create the input for the quote category
+const quoteCategoryInput = document.createElement('input');
+quoteCategoryInput.setAttribute('id', 'newQuoteCategory');
+quoteCategoryInput.setAttribute('type', 'text');
+quoteCategoryInput.setAttribute('placeholder', 'Enter quote category');
+
+// Step 4: Create the button to add the quote
+const addQuoteButton = document.createElement('button');
+addQuoteButton.innerText = 'Add Quote';
+addQuoteButton.addEventListener('click', addQuote); // Attach the addQuote function as an event listener
+
+// Step 5: Append the inputs and button to the form container
+formContainer.appendChild(quoteTextInput);
+formContainer.appendChild(quoteCategoryInput);
+formContainer.appendChild(addQuoteButton);
 
   if (newQuoteText === "" || newQuoteCategory === "") {
     alert("Please enter both a quote and a category.");
