@@ -48,6 +48,7 @@ function addQuote() {
     formContainer.appendChild(quoteCategoryInput);
     formContainer.appendChild(addQuoteButton);
   } 
+  createAddForm();
 
 
 const text = document.getElementById('newQuoteText').value;
