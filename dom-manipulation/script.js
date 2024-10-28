@@ -193,3 +193,56 @@ function addQuote() {
   }
 }
 
+
+// Fetch quotes from server
+async function fetchQuotes() {
+    const response = await fetch('https://jsonplaceholder.typicode.com/quotes');
+    const quotes = await response.json();
+    return quotes;
+}
+
+// Add a new quote
+async function addQuote(quote) {
+    const response = await fetch('https://jsonplaceholder.typicode.com/quotes', {
+        method: 'POST',
+        body: JSON.stringify(quote),
+        headers: { 'Content-type': 'application/json; charset=UTF-8' }
+    });
+    return response.json();
+}
+
+async function syncData() {
+    const serverQuotes = await fetchQuotes();
+    const localQuotes = JSON.parse(localStorage.getItem('quotes')) || [];
+
+    // Simple Sync: Server data overwrites local data if different
+    const mergedQuotes = resolveConflicts(localQuotes, serverQuotes);
+    localStorage.setItem('quotes', JSON.stringify(mergedQuotes));
+}
+
+// Basic conflict resolution
+function resolveConflicts(localQuotes, serverQuotes) {
+    const quoteMap = new Map();
+    serverQuotes.forEach(quote => quoteMap.set(quote.id, quote));
+
+    // If there's a local edit, you could flag it or override with server data
+    localQuotes.forEach(quote => {
+        if (!quoteMap.has(quote.id)) {
+            quoteMap.set(quote.id, quote);
+        }
+    });
+    return Array.from(quoteMap.values());
+}
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.innerText = message;
+    document.body.appendChild(notification);
+
+    setTimeout(() => notification.remove(), 3000); // Auto-hide after 3 seconds
+}
+
+showNotification('New quotes have been synced from the server');
+
+
