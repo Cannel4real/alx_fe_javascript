@@ -195,7 +195,7 @@ function addQuote() {
 
 
 // Fetch quotes from server
-async function fetchQuotes() {
+async function fetchQuotesFromServer() {
     const response = await fetch('https://jsonplaceholder.typicode.com/quotes');
     const quotes = await response.json();
     return quotes;
